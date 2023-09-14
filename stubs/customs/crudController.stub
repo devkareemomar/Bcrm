@@ -1,0 +1,131 @@
+<?php
+
+namespace {{namespace}};
+
+
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\Api\BulkDestroyRequest;
+use Modules\{{upper_module}}\Http\Resources\{{plurar_upper_name}}\{{upper_name}}Resource;
+use Modules\{{upper_module}}\Http\Resources\{{plurar_upper_name}}\{{upper_name}}Collection;
+use Modules\{{upper_module}}\Http\Requests\{{plurar_upper_name}}\Store{{upper_name}}Request;
+use Modules\{{upper_module}}\Http\Requests\{{plurar_upper_name}}\Update{{upper_name}}Request;
+use Modules\{{upper_module}}\Http\Resources\{{plurar_upper_name}}\{{upper_name}}BriefResource;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Modules\{{upper_module}}\Repositories\{{plurar_upper_name}}\{{upper_name}}RepositoryInterface;
+
+class {{upper_name}}Controller extends ApiController
+{
+    /** inject required classes */
+    public function __construct(protected {{upper_name}}RepositoryInterface ${{lower_name}}Repository)
+    {
+        /** Roles and Permissions middlewares */
+        $this->middleware('permission:read_{{lower_module}}_{{plurar_lower_name}}')->only('index', 'show');
+        $this->middleware('permission:create_{{lower_module}}_{{plurar_lower_name}}')->only('store');
+        $this->middleware('permission:update_{{lower_module}}_{{plurar_lower_name}}')->only('update');
+        $this->middleware('permission:delete_{{lower_module}}_{{plurar_lower_name}}')->only('destroy', 'bulkDestroy');
+    }
+
+
+    public function index()
+    {
+        ${{plurar_lower_name}} = $this->{{lower_name}}Repository->paginate('id', []);
+
+        $result = new {{upper_name}}Collection(${{plurar_lower_name}});
+
+        return $this->jsonResponse()->setStatus(true)
+                    ->setCode(200)
+                    ->setResult($result);
+    }
+
+
+    public function brief()
+    {
+        ${{plurar_lower_name}} = $this->{{lower_name}}Repository->getAll();
+
+        $result = {{upper_name}}BriefResource::collection(${{plurar_lower_name}});
+
+        return $this->jsonResponse()->setStatus(true)
+            ->setCode(200)
+            ->setResult($result);
+    }
+
+
+    public function store(Store{{upper_name}}Request $request)
+    {
+        $data = $request->validated();
+
+        ${{lower_name}} = $this->{{lower_name}}Repository->store($data);
+
+        $result = new {{upper_name}}Resource(${{lower_name}});
+
+        return $this->jsonResponse()->setStatus(true)
+            ->setMessage("{{lower_name}} created successfully.")
+            ->setCode(201)
+            ->setResult($result);
+    }
+
+
+    public function show($id)
+    {
+        ${{lower_name}} = $this->{{lower_name}}Repository->findById($id, []);
+
+        if (!${{lower_name}}) {
+            throw new NotFoundHttpException();
+        }
+
+        $result =  new {{upper_name}}Resource(${{lower_name}});
+
+        return $this->jsonResponse()->setStatus(true)
+            ->setCode(200)
+            ->setResult($result);
+    }
+
+
+    public function update(Update{{upper_name}}Request $request, $id)
+    {
+        ${{lower_name}} = $this->{{lower_name}}Repository->findById($id);
+
+        if (!${{lower_name}}) {
+            throw new NotFoundHttpException();
+        }
+
+        $data = $request->validated();
+
+        ${{lower_name}} = $this->{{lower_name}}Repository->updateByInstance(${{lower_name}}, $data);
+
+        $result = new {{upper_name}}Resource(${{lower_name}});
+
+        return $this->jsonResponse()->setStatus(true)
+            ->setMessage("{{lower_name}} updated successfully.")
+            ->setCode(200)
+            ->setResult($result);
+    }
+
+
+    public function destroy($id)
+    {
+        ${{lower_name}} = $this->{{lower_name}}Repository->findById($id);
+
+        if (!${{lower_name}}) {
+            throw new NotFoundHttpException();
+        }
+
+        $this->{{lower_name}}Repository->destroy($id);
+
+        return $this->jsonResponse()->setStatus(true)
+            ->setMessage("{{lower_name}} deleted successfully.")
+            ->setCode(200);
+    }
+
+
+    public function bulkDestroy(BulkDestroyRequest $request)
+    {
+        $ids = $request->ids;
+
+        $count = $this->{{lower_name}}Repository->destroyAll($ids);
+
+        return $this->jsonResponse()->setStatus(true)
+            ->setMessage("$count {{plurar_lower_name}} deleted successfully.")
+            ->setCode(200);
+    }
+}

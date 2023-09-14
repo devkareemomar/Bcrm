@@ -1,0 +1,18 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Http\Resources\PaginatedCollection;
+
+class {{upper_name}}Collection extends PaginatedCollection
+{
+    // /**
+    //  * method to change pagination data shape instead of default Resource
+    //  * @param Collection  $item
+    //  * @return array
+    //  */
+    // public function _toArray($item)
+    // {
+    //     return [];
+    // }
+}

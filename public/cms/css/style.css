@@ -1,0 +1,664 @@
+/* global rules */
+:root {
+    --baseColor: rgb(85, 128, 169);
+    --secondColor: #8e8071;
+}
+
+::selection {
+    background: var(--baseColor);
+    color: white;
+}
+
+input {
+    text-align: right;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
+a {
+    text-decoration: none !important;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--baseColor) !important;
+}
+
+.colored-span {
+    color: var(--baseColor);
+}
+
+.btn-yellow {
+    border-radius: 0 !important;
+    padding: 10px 20px !important;
+    color: white !important;
+    background-color: var(--baseColor) !important;
+    border: 1px solid transparent !important;
+    font-weight: bold !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.btn-yellow:hover {
+    background-color: transparent !important;
+    border-color: var(--baseColor) !important;
+    color: var(--baseColor) !important;
+}
+.underline-h2 {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+}
+.underline-h2::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    bottom: -50%;
+    right: 0;
+}
+/* overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(85, 128, 169, 0.7);
+    transition: opacity 0.4s ease-in-out;
+    opacity: 0;
+}
+
+.overlay .content {
+    font-weight: bold;
+    color: white;
+}
+
+.overlay .content a {
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+}
+
+.img-overlay {
+    position: relative;
+}
+
+.img-overlay:hover .overlay {
+    opacity: 1;
+}
+
+.overlay .content a:hover {
+    color: black !important;
+}
+
+/* contact icon */
+.contact-icon .info:hover .icon {
+    background-color: var(--baseColor);
+    border-color: var(--baseColor);
+}
+
+.contact-icon .icon {
+    border: 1px solid white;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    margin-left: 10px;
+}
+
+.contact-icon .info p {
+    margin-bottom: 0 !important;
+}
+
+/* start header */
+header {
+    z-index: 100;
+    width: 100%;
+}
+
+header .head {
+    background-color: #1f2d30;
+}
+
+header .head a {
+    color: white;
+}
+
+header .head .btn {
+    border-radius: 0;
+    padding: 10px 20px;
+}
+
+header .head .info i {
+    font-size: 14px;
+}
+
+header .head .info div:hover span,
+header .head .info div:hover i {
+    color: var(--baseColor);
+}
+
+/* start nav */
+nav {
+    height: 120px;
+    background-color: rgb(255, 255, 255, 0.9);
+}
+nav .navbar-brand img {
+    height: 65px;
+}
+nav a {
+    color: black !important;
+}
+
+.navbar-toggler:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+/* end header */
+
+/* start header-slider */
+.header-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-slider::after {
+    content: '';
+    position: absolute;
+    background-image: url(../img/sheap1.png);
+    background-size: cover;
+    background-position: bottom;
+    bottom: -5px;
+    height: 185px;
+    z-index: 2;
+    left: -2px;
+    right: -2px;
+}
+
+.header-slider .owl-item::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    z-index: -1;
+}
+
+.header-slider .owl-item {
+    height: 500px;
+    position: relative;
+    background-image: url(/img/slider1.png);
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    height: 100vh;
+}
+
+.header-slider .owl-carousel .owl-prev,
+.header-slider .owl-carousel .owl-next {
+    background-color: #1f2d30 !important;
+    transition: all 0.4s ease-in-out;
+    height: 50px;
+    width: 35px;
+    position: absolute;
+    top: 50%;
+}
+
+.owl-theme .owl-nav {
+    margin-top: 0 !important;
+}
+
+.header-slider .owl-carousel .owl-prev:hover,
+.header-slider .owl-carousel .owl-next:hover {
+    background-color: rgba(184, 144, 37, 0.6) !important;
+}
+
+.header-slider .owl-carousel .owl-prev span,
+.header-slider .owl-carousel .owl-next span {
+    color: white;
+    height: 15px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.header-slider .owl-carousel .owl-prev {
+    left: 0;
+}
+
+.header-slider .owl-carousel .owl-next {
+    right: 0;
+}
+
+/* end header-slider */
+
+/* start quality */
+
+.quality::after {
+    content: '';
+    background-image: url(../img/quality_img.png);
+    background-size: cover;
+    background-position: bottom;
+    position: absolute;
+    left: 0px;
+    top: -50px;
+    z-index: 2;
+    width: 280px;
+    height: 135px;
+}
+
+.quality {
+    padding: 60px 0px;
+    position: relative;
+}
+.quality.quality--after::after {
+    display: none;
+}
+
+.quality .quality-card {
+    position: relative;
+}
+
+.quality .quality-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -15px;
+    z-index: 9;
+    border-left: 1px dashed #e3e3e3;
+}
+
+.quality .quality-card:first-child::after {
+    display: none;
+}
+
+.quality .quality-card a {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.quality .quality-card p {
+    color: #606060;
+}
+
+/* end quality */
+
+/* start about */
+.about {
+    padding: 150px 0px;
+    position: relative;
+}
+
+.about .head h2 {
+    font-weight: bold;
+}
+
+.about .about-info .about-card {
+    position: relative;
+    padding: 0;
+}
+
+.about .about-info .about-card img {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+.about .about-info a:first-child {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.about .about-info .back-card {
+    background-color: #fafafa;
+    color: black;
+    padding: 40px;
+    transition: all 0.4s ease-in-out;
+}
+
+.about .about-info .back-card a {
+    color: black;
+}
+
+.about .about-info .front-card {
+    background-color: var(--secondColor);
+    color: white;
+    padding: 60px 40px;
+    transition: transform 0.4s ease-in-out;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    top: -20px;
+    transform: scaleY(0);
+}
+
+.about-card:hover .front-card,
+.active.about-card .front-card {
+    transform: scaleY(1);
+}
+
+.about .about-info .front-card a {
+    color: white;
+}
+
+.about .about-info .front-card a:hover {
+    color: black !important;
+}
+
+/* end about */
+
+/* start services */
+
+.services {
+    padding: 30px 15px;
+}
+
+.services .service:hover .overlay {
+    opacity: 1;
+}
+
+.services .service .info {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+}
+
+/* end services */
+
+/* start projects */
+.projects img {
+    width: 100%;
+    height: 100%;
+}
+
+.projects .overlay {
+    font-size: 25px;
+    padding: 30px 25px;
+}
+
+.projects .overlay .content {
+    border: 2px solid white;
+    height: 100%;
+    width: 100%;
+}
+
+/* end projects */
+.ruler {
+    background-image: linear-gradient(
+            rgb(128, 128, 128, 0.9),
+            rgb(128, 128, 128, 0.9)
+        ),
+        url(../img/ruler.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    font-weight: bold;
+    background-position: center center;
+    min-height: 140px;
+    color: white;
+}
+
+/* start construction */
+.construction .ruler {
+    font-size: 22px;
+}
+
+.construction img {
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: 'FlipH';
+    width: 100%;
+}
+
+/* end construction */
+
+/* start client opinions */
+.opinion {
+    background-image: linear-gradient(
+            rgb(255, 255, 255, 0.9),
+            rgb(255, 255, 255, 0.9)
+        ),
+        url(../img/projects.png);
+    background-attachment: fixed;
+    position: relative;
+}
+
+.opinion form input,
+.opinion form textarea {
+    padding: 5px 20px;
+    border: rgb(225, 225, 225);
+}
+
+.opinion form input:focus,
+.opinion form textarea:focus {
+    outline: 0;
+}
+
+.opinion .owl-dots {
+    position: absolute;
+    bottom: -15px;
+    left: 18%;
+}
+
+.opinion .owl-dot span {
+    background-color: black !important;
+}
+
+.opinion .active span {
+    background-color: var(--baseColor) !important;
+}
+
+/* end client opinions */
+
+/* start footer */
+footer {
+    background-image: linear-gradient(
+            rgb(31, 45, 48, 0.9),
+            rgb(31, 45, 48, 0.9)
+        ),
+        url(../img/footer.png);
+    color: white;
+}
+
+footer .contact-icon {
+    background-color: rgb(31, 45, 48);
+}
+
+footer .content {
+    padding: 90px 0px;
+}
+
+footer .content a {
+    color: white;
+}
+
+footer .copy-right {
+    background-color: var(--secondColor);
+    padding: 15px 0;
+    font-weight: bold;
+}
+
+/* end footer */
+
+/* start section global in pages */
+.start {
+    background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)),
+        url(../img/startPage.png);
+    background-position: center;
+    height: 400px;
+    color: white;
+}
+
+.start .text h2 {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.start .text span {
+    font-size: 26px;
+}
+
+/* start about page */
+
+.numbers {
+    text-align: center;
+    background-size: 125%;
+    font-size: 26px;
+    height: 165px;
+}
+
+/* end about page */
+
+/* start contact page */
+.contact-info {
+    margin-top: 90px;
+}
+
+.contact-info .contact-icon a {
+    color: #606060;
+}
+
+.contact-icon .icon {
+    border: 1px solid #606060;
+}
+
+/* end contact page */
+
+/* start single project page */
+.my-slider .images div {
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+.my-slider .images div img {
+    width: 100%;
+    height: 100%;
+}
+
+.details .info ul {
+    list-style-type: none;
+}
+.details .info ul li {
+    margin: 1rem 0rem;
+}
+.details .nav-item img {
+    height: 180px;
+}
+.details .tab-content img {
+    height: 350px;
+    width: 100%;
+}
+
+@media (min-width: 767px) {
+    .start-text .text p,
+    .about .head p,
+    .projects .text p,
+    .related-project .head p {
+        width: 60%;
+        margin: 10px auto;
+    }
+
+    .opinion .text p {
+        width: 90%;
+    }
+}
+/* end single project page */
+
+/* start Media queries */
+
+@media (max-width: 576px) {
+    .construction .ruler {
+        font-size: 16px;
+    }
+
+    .opinion .owl-dots {
+        left: 50%;
+        bottom: -40px;
+        transform: translateX(-50%);
+    }
+    .start .text h2 {
+        font-size: 40px;
+    }
+    .details .nav-item img {
+        object-fit: fill;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    header .head .info {
+        display: none;
+    }
+    footer .content {
+        padding: 30px 0px;
+    }
+
+    /* about page */
+    .aim div div:last-child {
+        margin-right: 0 !important;
+    }
+
+    .numbers {
+        height: auto;
+        background-size: cover;
+    }
+
+    .numbers div {
+        margin: 20px 0px;
+    }
+    .header-slider::after {
+        height: 80px;
+    }
+
+    .details .tab-content img {
+        height: 250px;
+    }
+    .details .nav-item img {
+        height: 100px;
+    }
+}
+
+@media (max-width: 992px) {
+    header .head {
+        display: none !important;
+    }
+    nav {
+        height: auto !important;
+    }
+    .section-overlay {
+        display: none;
+    }
+
+    .quality {
+        padding: 30px 20px;
+    }
+
+    .quality::after {
+        display: none;
+    }
+
+    .quality .quality-card::after {
+        display: none;
+    }
+
+    .about .about-info .back-card {
+        display: block !important;
+        margin: 15px;
+    }
+
+    .about .about-info .front-card {
+        display: none !important;
+    }
+}

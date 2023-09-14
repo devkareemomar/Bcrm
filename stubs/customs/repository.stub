@@ -1,0 +1,15 @@
+<?php
+
+namespace {{namespace}};
+
+use Modules\{{upper_module}}\Models\{{upper_name}};
+use App\Repositories\BaseEloquentRepository;
+
+class {{upper_name}}Repository extends BaseEloquentRepository implements {{upper_name}}RepositoryInterface
+{
+    /** @var string */
+    protected $modelName = {{upper_name}}::class;
+
+    protected $filterableFields = [];
+    protected $searchableFields = [];
+}
